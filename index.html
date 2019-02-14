@@ -185,6 +185,62 @@
 				padding-right: 10px;
 				font-family: 'Source Code Pro', monospace;
 			}
+			#dot {
+				height: 2em;
+				width: 2em;
+				text-align: center;
+				border: 3px solid #008000;
+				border-radius: 50%;
+				background-color:#32CD32;
+				float: left;
+				margin-right: 10px;
+				margin-top: 10px;
+				-webkit-box-shadow: 10px 10px 110px -15px rgba(0,0,0,1);
+				-moz-box-shadow: 10px 10px 110px -15px rgba(0,0,0,1);
+				box-shadow: 10px 10px 110px -15px rgba(0,0,0,1);
+			}
+			#dot > h1 {
+				position: absolute;
+				margin: 0;
+				margin-top: -3px;
+				margin-left: 6px;
+				font-family: 'Source Code Pro', monospace;
+				user-select: none;
+			}
+			#example-list-item {
+				background-color: darkgray;
+				height: 15%;
+				margin: auto;
+				display: grid;
+				grid-template-columns: 1fr 2fr;
+				border: 3px solid gray;
+				-webkit-box-shadow: 10px 10px 42px -15px rgba(0,0,0,0.75);
+				-moz-box-shadow: 10px 10px 42px -15px rgba(0,0,0,0.75);
+				box-shadow: 10px 10px 42px -15px rgba(0,0,0,0.75);
+				min-width: 250px;
+				overflow: hidden;
+			}
+			#submit-box {
+				height: 20px;
+				width: 70px;
+				padding:8px;
+				margin-top:16px;
+				margin-right: 10px;
+				border: 3px solid darkred;
+				background-color: indianred;
+				border-radius: 10px;
+				margin-top: 15px;
+				text-align: center;
+				float:left;
+			}
+			#submit-box > h1 {
+				position: absolute;
+				margin-top: -6px;
+				font-size: x-large;
+				font-weight: lighter;
+				font-family: 'Source Code Pro', monospace;
+				user-select: none;
+			}
 		</style>
 	</head>
 	<body onload="onload();" onresize="onload()">
@@ -248,10 +304,34 @@
 				<div id="help-title" class="container-title">
 					<h1>Help Menu</h1>
 				</div>
+				
+
 				<div class="help-text">
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
 					<p>The&nbsp;<strong>MPN</strong>&nbsp;package computes the Most Probable Number, i.e.&nbsp;microbial density, derived from serial dilutions.</p>
 					<p>The user inputs the number of dilutions, number of tubes, number of positive tubes, amount of inocula.</p>
 					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+
+					<div id="dot">
+							<h1>+</h1>
+							<br>
+					</div>
+					<p>This button will add a new set to the data set that includes: Positive, Population, Volume.</p>
+					<div>&nbsp;</div>
+					<p> <strong>Positive:</strong>&nbsp; Number of Positive tubes.</p>
+					<p><strong>Population:</strong>&nbsp;Total number of tubes.</p>
+					<p><strong>Volume:</strong>&nbsp;Total quantity of dilution being used in each tube.</p>
+
+					<div id="submit-box">
+								<h1 id="submit-button-text">Query</h1>
+					</div>
+					<div>&nbsp;</div>
+					<p>Calculates data set using the MPN formula to find the most probable number.</p>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+
 					<div>
 						<h2 class="gmail-headertekst">References</h2>
 						<h4><a href="https://cran.r-project.org/web/packages/MPN/vignettes/MPN-vignette.html">https://cran.r-project.org/web/packages/MPN/vignettes/MPN-vignette.html</a></h4>
