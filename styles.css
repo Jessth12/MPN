@@ -1,0 +1,270 @@
+body {
+    margin: 0;
+}
+
+#wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#input-container {
+    background-color: lightgray;
+    height: 100%;
+    max-height: 100%;
+}
+
+#output-container {
+    background-color: darkgray;
+    height: 100%;
+}
+
+#help-container {
+    background: lightgray;
+    height: 100%;
+}
+
+.container-title {
+    height: 70px;
+    border: 3px solid gray;
+    text-align: center;
+    -webkit-box-shadow: 10px 10px 42px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 42px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 42px -4px rgba(0, 0, 0, 0.75);
+}
+
+.container-title>h1 {
+    font-family: 'Source Code Pro', monospace;
+    margin: 0;
+    margin-top: 15px;
+}
+
+#add-input-list-item-container {
+    position: absolute;
+}
+
+#add-button {
+    height: 2em;
+    width: 2em;
+    text-align: center;
+    border: 3px solid #008000;
+    border-radius: 50%;
+    background-color: #32CD32;
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+    -webkit-box-shadow: 10px 10px 110px -15px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 10px 10px 110px -15px rgba(0, 0, 0, 1);
+    box-shadow: 10px 10px 110px -15px rgba(0, 0, 0, 1);
+}
+
+#add-button:hover {
+    background-color: #008000;
+    border: 3px solid #32CD32;
+}
+
+#add-button>h1 {
+    position: absolute;
+    margin: 0;
+    margin-top: -3px;
+    margin-left: 6px;
+    font-family: 'Source Code Pro', monospace;
+    user-select: none;
+}
+
+#input-list {
+    width: calc(100% - 20px);
+    overflow: scroll;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 60px;
+}
+
+.input-list-item {
+    background-color: darkgray;
+    height: 15%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border: 3px solid gray;
+    -webkit-box-shadow: 10px 10px 42px -15px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 42px -15px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 42px -15px rgba(0, 0, 0, 0.75);
+    min-width: 250px;
+    overflow: hidden;
+}
+
+.input-list-item>input {
+    font-family: 'Source Code Pro', monospace;
+    float: right;
+}
+
+.input-list-item>label {
+    text-align: center;
+    font-family: 'Source Code Pro', monospace;
+    padding: 5%;
+}
+
+.input-list-item>label:not(:first-child) {
+    border-top: 1px solid black;
+}
+
+.input-list-item:not(:first-child) {
+    margin-top: 5%;
+}
+
+#submit-container {
+    height: 70px;
+    border: 3px solid gray;
+    padding-left: 10px;
+    padding-right: 10px;
+    -webkit-box-shadow: 10px 10px 42px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 42px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 42px -4px rgba(0, 0, 0, 0.75);
+}
+
+#submit-button {
+    height: 20px;
+    padding: 8px;
+    margin-top: 16px;
+    border: 3px solid darkred;
+    background-color: indianred;
+    border-radius: 10px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+#submit-button>h1 {
+    position: absolute;
+    margin-top: -6px;
+    font-size: x-large;
+    font-weight: lighter;
+    font-family: 'Source Code Pro', monospace;
+    user-select: none;
+}
+
+#submit-button:hover {
+    border: 3px solid indianred;
+    background-color: darkred;
+}
+
+.remove-link {
+    position: fixed;
+    margin-left: 276px;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    margin-top: -9px;
+    border: 1px solid darkred;
+    background-color: red;
+}
+
+.remove-link:hover {
+    background-color: darkred;
+    border: 1px solid red;
+}
+
+.remove-text {
+    margin: 0;
+    margin-left: 5px;
+    margin-top: -3px;
+    font-family: sans-serif;
+    font-size: 20px;
+    user-select: none;
+}
+
+#output-container {
+    display: grid;
+    grid-template-rows: 1fr 2fr 2fr;
+}
+
+.output-mpn-container {
+    text-align: center;
+}
+
+.output-mpn-container>h2 {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 300;
+}
+
+.output-mpn-container>h3 {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 200;
+}
+
+.underline {
+    margin: 0;
+    width: 240px;
+    margin-left: auto;
+    margin-right: auto;
+    border-color: grey;
+}
+
+.help-text {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: 'Source Code Pro', monospace;
+}
+
+#dot {
+    height: 2em;
+    width: 2em;
+    text-align: center;
+    border: 3px solid #008000;
+    border-radius: 50%;
+    background-color: #32CD32;
+    float: left;
+    margin-right: 10px;
+    margin-top: 10px;
+    -webkit-box-shadow: 10px 10px 110px -15px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 10px 10px 110px -15px rgba(0, 0, 0, 1);
+    box-shadow: 10px 10px 110px -15px rgba(0, 0, 0, 1);
+}
+
+#dot>h1 {
+    position: absolute;
+    margin: 0;
+    margin-top: -3px;
+    margin-left: 6px;
+    font-family: 'Source Code Pro', monospace;
+    user-select: none;
+}
+
+#example-list-item {
+    background-color: darkgray;
+    height: 15%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border: 3px solid gray;
+    -webkit-box-shadow: 10px 10px 42px -15px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 42px -15px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 42px -15px rgba(0, 0, 0, 0.75);
+    min-width: 250px;
+    overflow: hidden;
+}
+
+#submit-box {
+    height: 20px;
+    width: 70px;
+    padding: 8px;
+    margin-top: 16px;
+    margin-right: 10px;
+    border: 3px solid darkred;
+    background-color: indianred;
+    border-radius: 10px;
+    margin-top: 15px;
+    text-align: center;
+    float: left;
+}
+
+#submit-box>h1 {
+    position: absolute;
+    margin-top: -6px;
+    font-size: x-large;
+    font-weight: lighter;
+    font-family: 'Source Code Pro', monospace;
+    user-select: none;
+}

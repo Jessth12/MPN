@@ -1,348 +1,112 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
-		<style>
-			body {
-				margin:0;
-			}
-			#wrapper {
-				display: grid;
-				grid-template-columns: 1fr 1fr 2fr;
-				width: 100%;
-				height: 100%;
-				position: absolute;
-			}
-			#input-container {
-				background-color: lightgray;
-				height: 100%;
-				max-height:100%;
-			}
-			#output-container {
-				background-color: darkgray;
-				height: 100%;
-				
-			}
-			
-			#help-container {
-				background: lightgray;
-				height: 100%;
-			}
-			.container-title {
-				height: 70px;
-				border: 3px solid gray;
-				text-align: center;
-				-webkit-box-shadow: 10px 10px 42px -4px rgba(0,0,0,0.75);
-				-moz-box-shadow: 10px 10px 42px -4px rgba(0,0,0,0.75);
-				box-shadow: 10px 10px 42px -4px rgba(0,0,0,0.75);
-			}
-			.container-title > h1 {
-				font-family: 'Source Code Pro', monospace;
-				margin: 0;
-				margin-top: 15px;
-			}
-			#add-input-list-item-container {
-				position: absolute;
-			}
-			#add-button {
-				height: 2em;
-				width: 2em;
-				text-align: center;
-				border: 3px solid #008000;
-				border-radius: 50%;
-				background-color:#32CD32;
-				float: right;
-				margin-right: 10px;
-				margin-top: 10px;
-				-webkit-box-shadow: 10px 10px 110px -15px rgba(0,0,0,1);
-				-moz-box-shadow: 10px 10px 110px -15px rgba(0,0,0,1);
-				box-shadow: 10px 10px 110px -15px rgba(0,0,0,1);
-			}
-			#add-button:hover {
-				background-color: #008000;
-				border: 3px solid #32CD32;
-			}
-			#add-button > h1 {
-				position: absolute;
-				margin: 0;
-				margin-top: -3px;
-				margin-left: 6px;
-				font-family: 'Source Code Pro', monospace;
-				user-select: none;
-			}
-			#input-list {
-				width: calc(100% - 20px);
-				overflow: scroll;
-				padding-left: 10px;
-				padding-right: 10px;
-				padding-top: 60px;
-			}
-			.input-list-item {
-				background-color: darkgray;
-				height: 15%;
-				margin: auto;
-				display: grid;
-				grid-template-columns: 1fr 2fr;
-				border: 3px solid gray;
-				-webkit-box-shadow: 10px 10px 42px -15px rgba(0,0,0,0.75);
-				-moz-box-shadow: 10px 10px 42px -15px rgba(0,0,0,0.75);
-				box-shadow: 10px 10px 42px -15px rgba(0,0,0,0.75);
-				min-width: 250px;
-				overflow: hidden;
-			}
-			.input-list-item > input {
-				font-family: 'Source Code Pro', monospace;
-				float: right;
-			}
-			.input-list-item > label {
-				text-align: center;
-				font-family: 'Source Code Pro', monospace;
-				padding: 5%;
-			}
-			.input-list-item > label:not(:first-child) {
-				border-top: 1px solid black;
-			}
-			.input-list-item:not(:first-child) {
-				margin-top: 5%;
-			}
-			#submit-container {
-				height: 70px;
-				border: 3px solid gray;
-				padding-left: 10px;
-				padding-right: 10px;
-				-webkit-box-shadow: 10px 10px 42px -4px rgba(0,0,0,0.75);
-				-moz-box-shadow: 10px 10px 42px -4px rgba(0,0,0,0.75);
-				box-shadow: 10px 10px 42px -4px rgba(0,0,0,0.75);
-			}
-			#submit-button {
-				height: 20px;
-				padding:8px;
-				margin-top:16px;
-				border: 3px solid darkred;
-				background-color: indianred;
-				border-radius: 10px;
-				margin-top: 15px;
-				text-align: center;
-			}
-			#submit-button > h1 {
-				position: absolute;
-				margin-top: -6px;
-				font-size: x-large;
-				font-weight: lighter;
-				font-family: 'Source Code Pro', monospace;
-				user-select: none;
-			}
-			#submit-button:hover {
-				border: 3px solid indianred;
-				background-color: darkred;
-			}
-			.remove-link {
-				position: fixed;
-    			margin-left: 276px;
-    			height: 20px;
-    			width: 20px;
-    			border-radius: 50%;
-    			margin-top: -9px;
-    			border: 1px solid darkred;
-				background-color: red;
-			}
-			.remove-link:hover {
-				background-color: darkred;
-				border: 1px solid red;
-			}
-			.remove-text {
-				margin: 0;
-    			margin-left: 5px;
-    			margin-top: -3px;
-    			font-family: sans-serif;
-    			font-size: 20px;
-   	 			user-select: none;
-			}
-			#output-container {
-				display: grid;
-				grid-template-rows: 1fr 2fr 2fr;
-			}
-			.output-mpn-container {
-				text-align: center;
-			}
-			.output-mpn-container > h2 {
-				font-family: 'Source Code Pro', monospace;
-				font-weight: 300;
-			}
-			.output-mpn-container > h3 {
-				font-family: 'Source Code Pro', monospace;
-				font-weight: 200;
-			}
-			.underline {
-				margin: 0;
-    			width: 240px;
-    			margin-left: auto;
-    			margin-right: auto;
-    			border-color: grey;
-			}
-			.help-text {
-				padding-left: 10px;
-				padding-right: 10px;
-				font-family: 'Source Code Pro', monospace;
-			}
-			#dot {
-				height: 2em;
-				width: 2em;
-				text-align: center;
-				border: 3px solid #008000;
-				border-radius: 50%;
-				background-color:#32CD32;
-				float: left;
-				margin-right: 10px;
-				margin-top: 10px;
-				-webkit-box-shadow: 10px 10px 110px -15px rgba(0,0,0,1);
-				-moz-box-shadow: 10px 10px 110px -15px rgba(0,0,0,1);
-				box-shadow: 10px 10px 110px -15px rgba(0,0,0,1);
-			}
-			#dot > h1 {
-				position: absolute;
-				margin: 0;
-				margin-top: -3px;
-				margin-left: 6px;
-				font-family: 'Source Code Pro', monospace;
-				user-select: none;
-			}
-			#example-list-item {
-				background-color: darkgray;
-				height: 15%;
-				margin: auto;
-				display: grid;
-				grid-template-columns: 1fr 2fr;
-				border: 3px solid gray;
-				-webkit-box-shadow: 10px 10px 42px -15px rgba(0,0,0,0.75);
-				-moz-box-shadow: 10px 10px 42px -15px rgba(0,0,0,0.75);
-				box-shadow: 10px 10px 42px -15px rgba(0,0,0,0.75);
-				min-width: 250px;
-				overflow: hidden;
-			}
-			#submit-box {
-				height: 20px;
-				width: 70px;
-				padding:8px;
-				margin-top:16px;
-				margin-right: 10px;
-				border: 3px solid darkred;
-				background-color: indianred;
-				border-radius: 10px;
-				margin-top: 15px;
-				text-align: center;
-				float:left;
-			}
-			#submit-box > h1 {
-				position: absolute;
-				margin-top: -6px;
-				font-size: x-large;
-				font-weight: lighter;
-				font-family: 'Source Code Pro', monospace;
-				user-select: none;
-			}
-		</style>
-	</head>
-	<body onload="onload();" onresize="onload()">
-		<div id="wrapper">
-			<div id="input-container" onscroll="onload();">
-				<div id="input-title" class="container-title">
-					<h1>Input</h1>
-				</div>
-				<div id="add-input-list-item-container">
-					<a onclick="add_input_group()">
-						<div id="add-button">
-							<h1>+</h1>
-						</div>
-					</a>
-				</div>
-				<div id="input-list">
-					<div class="input-list-item">
-						<label for="positive">Positives</label>
-						<input min=0 type="number">
-			
-						<label for="total">Population</label>
-						<input min=0 type="number">
-						
-						<label for="volume">Volume</label>
-						<input min=0 type="number">
 
-						<a class="remove-link" onclick="remove_button(this);">
-							<div class="remove-button">
-								<h1 class="remove-text">x</h1>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div id="submit-container">
-						<a onclick="submit();">
-							<div id="submit-button">
-								<h1 id="submit-button-text">Query</h1>
-							</div>
-						</a>
-				</div>
-			</div>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
 
-			<div id="output-container">
-					<div id="output-title" class="container-title">
-						<h1>Output</h1>
-					</div>
-					<div class="output-mpn-container">
-						<h2>Calculated MPN</h2>
-						<hr class="underline" />
-						<h3 id="output-mpn">Not Yet Calculated</h3>
-					</div>
-					<div class="output-mpn-container">
-						<h2>Confidence Interval</h2>
-						<hr class="underline" style="width: 300px;" />
-						<h3 id="output-mpn-con">Not Yet Calculated</h3>
-					</div>
+<body onload="onload();" onresize="onload()">
+    <div id="wrapper">
+        <div id="input-container" onscroll="onload();">
+            <div id="input-title" class="container-title">
+                <h1>Input</h1>
+            </div>
+            <div id="add-input-list-item-container">
+                <a onclick="add_input_group()">
+                    <div id="add-button">
+                        <h1>+</h1>
+                    </div>
+                </a>
+            </div>
+            <div id="input-list">
+                <div class="input-list-item">
+                    <label for="positive">Positives</label>
+                    <input min=0 type="number">
 
-			</div>
+                    <label for="total">Population</label>
+                    <input min=0 type="number">
 
-			<div id="help-container">
-				<div id="help-title" class="container-title">
-					<h1>Help Menu</h1>
-				</div>
-				
+                    <label for="volume">Volume</label>
+                    <input min=0 type="number">
 
-				<div class="help-text">
-					<div>&nbsp;</div>
-					<div>&nbsp;</div>
-					<p>The&nbsp;<strong>MPN</strong>&nbsp;package computes the Most Probable Number, i.e.&nbsp;microbial density, derived from serial dilutions.</p>
-					<p>The user inputs the number of dilutions, number of tubes, number of positive tubes, amount of inocula.</p>
-					<div>&nbsp;</div>
-					<div>&nbsp;</div>
+                    <a class="remove-link" onclick="remove_button(this);">
+                        <div class="remove-button">
+                            <h1 class="remove-text">x</h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="submit-container">
+                <a onclick="submit();">
+                    <div id="submit-button">
+                        <h1 id="submit-button-text">Query</h1>
+                    </div>
+                </a>
+            </div>
+        </div>
 
-					<div id="dot">
-							<h1>+</h1>
-							<br>
-					</div>
-					<p>This button will add a new set to the data set that includes: Positive, Population, Volume.</p>
-					<div>&nbsp;</div>
-					<p> <strong>Positive:</strong>&nbsp; Number of Positive tubes.</p>
-					<p><strong>Population:</strong>&nbsp;Total number of tubes.</p>
-					<p><strong>Volume:</strong>&nbsp;Total quantity of dilution being used in each tube.</p>
-					<div>&nbsp;</div>
-					<div id="submit-box">
-								<h1 id="submit-button-text">Query</h1>
-					</div>
-				
-					<p>Calculates data set using the MPN formula to find the most probable number.</p>
-					<div>&nbsp;</div>
-					<div>&nbsp;</div>
-					<p>If <strong>NaN</strong> received as an answer: NaN represents "Not-A-Number"value.</p>
+        <div id="output-container">
+            <div id="output-title" class="container-title">
+                <h1>Output</h1>
+            </div>
+            <div class="output-mpn-container">
+                <h2>Calculated MPN</h2>
+                <hr class="underline" />
+                <h3 id="output-mpn">Not Yet Calculated</h3>
+            </div>
+            <div class="output-mpn-container">
+                <h2>Confidence Interval</h2>
+                <hr class="underline" style="width: 300px;" />
+                <h3 id="output-mpn-con">Not Yet Calculated</h3>
+            </div>
 
-					<div>
-						<h2 class="gmail-headertekst">References</h2>
-						<h4><a href="https://cran.r-project.org/web/packages/MPN/vignettes/MPN-vignette.html">https://cran.r-project.org/web/packages/MPN/vignettes/MPN-vignette.html</a></h4>
-						<h4><a href="https://www.fda.gov/food/foodscienceresearch/laboratorymethods/ucm109656.htm">https://www.fda.gov/food/foodscienceresearch/laboratorymethods/ucm109656.htm</a></h4>
-					</div>
-				</div>
+        </div>
 
-			</div>
-		</div>
-		<script src="page.js"></script>
-		<script src="math.js"></script>
-	</body>
+        <div id="help-container">
+            <div id="help-title" class="container-title">
+                <h1>Help Menu</h1>
+            </div>
+
+
+            <div class="help-text">
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <p>The&nbsp;<strong>MPN</strong>&nbsp;package computes the Most Probable Number, i.e.&nbsp;microbial density, derived from serial dilutions.</p>
+                <p>The user inputs the number of dilutions, number of tubes, number of positive tubes, amount of inocula.</p>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+
+                <div id="dot">
+                    <h1>+</h1>
+                    <br>
+                </div>
+                <p>This button will add a new set to the data set that includes: Positive, Population, Volume.</p>
+                <div>&nbsp;</div>
+                <p> <strong>Positive:</strong>&nbsp; Number of Positive tubes.</p>
+                <p><strong>Population:</strong>&nbsp;Total number of tubes.</p>
+                <p><strong>Volume:</strong>&nbsp;Total quantity of dilution being used in each tube.</p>
+                <div>&nbsp;</div>
+                <div id="submit-box">
+                    <h1 id="submit-button-text">Query</h1>
+                </div>
+
+                <p>Calculates data set using the MPN formula to find the most probable number.</p>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <p>If <strong>NaN</strong> received as an answer: NaN represents "Not-A-Number"value.</p>
+
+                <div>
+                    <h2 class="gmail-headertekst">References</h2>
+                    <h4><a href="https://cran.r-project.org/web/packages/MPN/vignettes/MPN-vignette.html">https://cran.r-project.org/web/packages/MPN/vignettes/MPN-vignette.html</a></h4>
+                    <h4><a href="https://www.fda.gov/food/foodscienceresearch/laboratorymethods/ucm109656.htm">https://www.fda.gov/food/foodscienceresearch/laboratorymethods/ucm109656.htm</a></h4>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="page.js"></script>
+    <script src="math.js"></script>
+</body>
+
 </html>
