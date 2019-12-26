@@ -52,18 +52,9 @@ qualify = function(groups) {
     fi = [];
     f = [];
 
-    if (groups.length <= 3)
-        return groups;
-
     for (var x = 0; x < groups.length; x++) {
         if (groups[x][2] == 0 || groups[x][2] == groups[x][1]) {
             fi.push(x);
-        }
-    }
-
-    for (var y = groups.length - 1; y > 0; y--) {
-        if (groups[y][2] == 0 || groups[y][2] == groups[y][1]) {
-            fi.push(y);
         }
     }
 
@@ -76,16 +67,20 @@ qualify = function(groups) {
         }
     }
 
-    console.log(f);
-
     return f;
 }
 
 onSubmit = (matrix) => {
-    console.log(matrix);
+
+    for (let x = 0; x < matrix.length; x++) {
+
+        matrix[x] = [parseFloat(matrix[x][0]), parseInt(matrix[x][1]), parseInt(matrix[x][2])];
+    }
+
+    console.log("Raw Matrix", matrix);
     let f = qualify(matrix);
-    console.log(f);
+    console.log("filtered", f);
     console.log(multi_mpn(matrix, f));
 }
 
-console.log("Version 1.1")
+console.log("Version 1.2")
